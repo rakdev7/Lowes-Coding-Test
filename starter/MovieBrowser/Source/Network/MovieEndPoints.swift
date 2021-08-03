@@ -33,6 +33,7 @@ enum MovieEndPoints: Endpoint {
     var queryParameters: [String : String] {
         let defaultParameters = [String: String]()
         var localParameters = [String: String]()
+        
         switch self {
         case .searchMovie(let text):
             localParameters = ["query":text, "api_key":  Network.apiKey]
