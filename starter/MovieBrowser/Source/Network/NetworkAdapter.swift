@@ -21,15 +21,17 @@ public class NetworkAdapter {
         components.host = endpoint.baseURL
         components.path = endpoint.path
         var queryItemsArray = [URLQueryItem]()
+        
         for item in endpoint.queryParameters {
             queryItemsArray.append(URLQueryItem(name: item.key, value: item.value))
         }
+        
         components.queryItems = queryItemsArray
         guard let url = components.url else {
             completionHandler(NetworkResult.failure(.invalidRequestError, nil))
             return
         }
-        
+        //hits test
         let task = session.dataTask(with: url) { (data, response, _) in
             completionHandler(NetworkResult.success(data, response))
         }
